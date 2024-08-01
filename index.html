@@ -6,6 +6,10 @@
     <title>Etch-a-Sketch</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
   </head>
   <body>
     <div class="notification" id="notification">Notification Message</div>
@@ -27,7 +31,17 @@
               />
               <button class="set-grid-size">Set Grid Size</button>
               <button class="clear-the-grid">Clear the Grid</button>
-              <input type="color" name="color" id="color">
+              <button class="random-color-btn">Random Color</button>
+              <button class="eraser-btn">Eraser</button>
+              <button class="progressive-gray-btn">
+                Progressive Gray | xD
+              </button>
+              <input
+                type="color"
+                name="color"
+                class="color-input"
+                value="#000000"
+              />
             </div>
           </div>
         </div>
@@ -36,5 +50,6 @@
         </div>
       </div>
     </div>
+    <footer><p>Made by Zohijodn Ma'rufov</p><a href=""><i class="fa-brands fa-github"></i></a></footer>
   </body>
 </html>

@@ -1,11 +1,13 @@
 document.addEventListener("DOMContentLoaded", (event) => {
   const gridContainer = document.querySelector(".grid-container");
   const setGridSizeButton = document.querySelector("button.set-grid-size");
-  const setGridSizeHeightInput = document.querySelector(
-    "input.set-grid-height"
-  );
+  const setGridSizeHeightInput = document.querySelector(".set-grid-height");
   const setGridSizeWidthInput = document.querySelector("input.set-grid-width");
   const clearTheGridButton = document.querySelector("button.clear-the-grid");
+  const colorInputButton = document.querySelector("input.color-input");
+  const randomColorButton = document.querySelector(".random-color-btn");
+  const eraserButton = document.querySelector(".eraser-btn");
+  const progressiveGrayButton = document.querySelector(".progressive-gray-btn");
 
   const MAX_GRID_SIZE = 100;
   const GRID_SIZES = {
@@ -25,11 +27,46 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }, duration);
   }
 
+  function InputColor() {}
+
+  function getRandomColor() {
+    let letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
   function createGridSquare(size) {
     const gridSquare = document.createElement("div");
     gridSquare.classList.add(`grid-square-${size}`);
-    gridSquare.addEventListener("mouseout", () => {
-      gridSquare.classList.add("hovered");
+
+    randomColorButton.addEventListener("click", () => {
+      gridSquare.addEventListener("mouseenter", () => {
+        gridSquare.style.backgroundColor = getRandomColor();
+      });
+    });
+    colorInputButton.addEventListener("change", () => {
+      gridSquare.addEventListener("mouseenter", () => {
+        gridSquare.style.opacity = `100%`;
+        gridSquare.style.backgroundColor = colorInputButton.value;
+      });
+    });
+
+    eraserButton.addEventListener("click", () => {
+      gridSquare.addEventListener("mouseenter", () => {
+        gridSquare.style.backgroundColor = "white";
+      });
+    });
+
+    progressiveGrayButton.addEventListener("click", () => {
+      let opacityScale = 0;
+      gridSquare.addEventListener("mouseenter", () => {
+        gridSquare.style.backgroundColor = "black";
+        opacityScale = opacityScale + 10;
+        gridSquare.style.opacity = `${opacityScale}%`;
+      });
     });
 
     return gridSquare;
@@ -81,8 +118,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
         gridContainer.appendChild(createGridSquare(size));
       }
     });
-
-    
 
     gridContainer.style.width = `${gridWidth * size}px`;
 
