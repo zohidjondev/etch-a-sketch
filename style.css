@@ -12,6 +12,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  flex-direction: column;
 }
 
 hr {
@@ -166,4 +167,25 @@ button:hover {
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+footer {
+  display: flex;
+  background-color: darkgray;
+  border-top: 3px solid gray;
+  width: 880px;
+  padding: 10px;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.3rem;
+}
+
+footer a {
+  color: inherit;
+  transition: all ease 300ms;
+}
+
+footer a:hover {
+  color: aliceblue;
+  transition: all ease 300ms;
 }
